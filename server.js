@@ -6,12 +6,16 @@ import AuthRouter from "./Routers/AuthRoutes.js";
 import connectDB from "./config/mongodb.js";
 import UserRoute from "./Routers/UserRoutes.js";
 const app = express();
-const port = "4000" || process.env.PORT;
+const port = process.env.PORT || 4000;
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-const allowedorigin = ["https://mearn-auth-vercel-frotend.vercel.app"];
+const allowedorigin = [
+  "https://mearn-auth-vercel-frotend.vercel.app",
+  "https://mearn-auth-backend-vercel.vercel.app",
+];
 app.use(cors({ origin: allowedorigin, credentials: true }));
+
 connectDB();
 app.use("/api/auth", AuthRouter);
 app.use("/api/user", UserRoute);
