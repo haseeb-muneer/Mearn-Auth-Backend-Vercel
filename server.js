@@ -10,7 +10,7 @@ const port = "4000" || process.env.PORT;
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-const allowedorigin = ["https://mearn-auth-vercel-frotend.vercel.app/"];
+const allowedorigin = ["https://mearn-auth-vercel-frotend.vercel.app"];
 app.use(cors({ origin: allowedorigin, credentials: true }));
 connectDB();
 app.use("/api/auth", AuthRouter);
